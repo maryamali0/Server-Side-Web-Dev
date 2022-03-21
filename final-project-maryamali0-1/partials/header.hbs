@@ -1,0 +1,30 @@
+<div class='navigation'>
+    <nav>
+        <ul>
+    <li><a href='/'>Home</a></li>
+    <li><a href='/tastytable/about'>About</a></li>
+    <li><a href='/tastytable/menu'>Menu</a></li>
+    <li><a href='/tastytable/add'>Add Order</a></li>
+    <li><a href='/tastytable'>Orders</a></li>
+    <li class='unsecured'><a href='/login'>Login</a></li>
+    <li class='unsecured'><a href='/register'>Register</a></li>
+    <li class='secured'><a href='/logout'>Logout</a></li>
+        </ul>
+    </nav>
+</div>
+<script>
+    function enableNavigation() {
+        if (document.cookie.includes('JWT')) {
+            document.querySelectorAll('.unsecured')
+                .forEach(elemnt => elemnt.style.display = 'none');
+            document.querySelectorAll('.secured').forEach(elemnt => elemnt.style.display =
+                'inline-block');
+        } else {
+            document.querySelectorAll('.unsecured').forEach(elemnt =>
+                elemnt.style.display = 'inline-block');
+            document.querySelectorAll('.secured').forEach(elemnt => elemnt.style.display =
+                'none');
+        }
+    }
+    enableNavigation();
+</script>

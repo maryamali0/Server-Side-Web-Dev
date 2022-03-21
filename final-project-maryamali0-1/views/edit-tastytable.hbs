@@ -1,0 +1,82 @@
+<div class="order-page">
+<form method="GET">
+
+    <p>Our burgers start at $5.</p>
+    <div class="form-controls">
+    <label for="key"> Order # </label>
+    <input type="text"
+           name="key"
+        {{# if edit}}
+           disabled
+           value="{{tastytable.key}}"
+        {{/if}} >
+    </div>
+    <div class="form-controls">
+    <label>Patty type:</label>
+     <span>
+    <input type="radio" name="patty" value="spicy beef" required {{setChecked "spicy beef" tastytable.patty}}>
+         <label for="spicy beef">Spicy Beef</label></span>
+        <span>
+        <input type="radio" name="patty" value="garlic chicken" {{setChecked "garlic chicken" tastytable.patty}}>
+            <label for="garlic chicken">Garlic Chicken</label></span>
+        <span>
+        <input type="radio" name="patty" value="potato and beans" {{setChecked "potato and beans" tastytable.patty}}>
+            <label for="potato and beans">Potato & Beans</label></span>
+    </div>
+    <div class="form-controls">
+    <label>
+        Extra Patties? ($0.50 each)</label>
+    {{#select tastytable.extra_patties}}
+
+        <select name="extra_patties">
+            <option value="0"> 0</option>
+            <option value="1"> 1</option>
+            <option value="2"> 2</option>
+        </select>
+    {{/select}}
+
+    </div>
+    <div class="form-controls">
+        <label>Toping</label>
+        <span>
+    <input type="checkbox" name="cheese" value="cheese" {{#when tastytable.cheese 'eq' "cheese"}}checked{{/when}}>
+    <label for="cheese"> Cheese </label>
+        </span>
+    <span>    <input type="checkbox" name="pickles" value="pickles" {{#when tastytable.pickles 'eq' "pickles"}}checked{{/when}}>
+    <label for="pickles"> Pickles </label>
+    </span>
+    </div>
+    <div class="form-controls">
+    <label>
+        Special Request(s)
+    </label>
+        <textarea name="special_request">
+            {{tastytable.special_request}}
+        </textarea>
+
+    </div>
+    <div class="form-controls">
+    <label>
+        Phone Number: </label>
+        <input type="tel" name="phone_number" required {{# if edit}}
+               value="{{tastytable.phone_number}}"
+        {{/if}}>
+
+    </div>
+    <div class="form-controls">
+    <label>
+        Email: </label>
+        <input type="email" name="email" required {{# if edit}}
+               value="{{tastytable.email}}"
+        {{/if}}>
+
+    </div>
+
+<!--    <button type="submit"> Add to Order</button>-->
+    {{#if edit}}
+        <button type="submit"> Update Order</button>
+    {{else}}
+        <button type="submit"> Submit Order</button>
+       {{/if}}
+</form>
+</div>
